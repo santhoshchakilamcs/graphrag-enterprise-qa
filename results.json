@@ -20,6 +20,20 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 0 product chunks mentioning 'Beverages'."
+      ],
+      "embedding_answer": "Exotic Liquids",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 1 product chunks mentioning 'Beverages'."
+      ],
+      "llm_answer": "Bigfoot Breweries",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "Bigfoot Breweries is the only supplier that offers more than half of the products in the Beverages category.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Category 'Beverages' has 12 products.",
+        "Supplier product counts in this category: Bigfoot Breweries (3), Exotic Liquids (2), Aux joyeux ecclésiastiques (2)"
       ]
     },
     {
@@ -37,6 +51,20 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 1 product chunks mentioning 'Seafood'."
+      ],
+      "embedding_answer": "I don't know",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 0 product chunks mentioning 'Seafood'."
+      ],
+      "llm_answer": "Svensk Sjöföda AB",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "Svensk Sjöföda AB is the only company listed for the Seafood category with more than three products.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Category 'Seafood' has 12 products.",
+        "Supplier product counts in this category: Svensk Sjöföda AB (3), New England Seafood Cannery (2), Lyngbysild (2)"
       ]
     },
     {
@@ -53,6 +81,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 50 order chunks."
+      ],
+      "embedding_answer": "Janet Leverling",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 41 order chunks."
+      ],
+      "llm_answer": "Margaret Peacock",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "In 1997, Margaret Peacock was the employee who handled the most orders among those listed.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Orders handled per employee in 1997 (top 3): Margaret Peacock (81), Janet Leverling (71), Nancy Davolio (55)"
       ]
     },
     {
@@ -69,6 +110,19 @@
       "baseline_correct": true,
       "baseline_evidence": [
         "Retrieved 50 order chunks."
+      ],
+      "embedding_answer": "Janet Leverling",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 13 order chunks."
+      ],
+      "llm_answer": "Margaret Peacock",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "In 1996, Margaret Peacock was the employee who handled the most orders among those listed.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Orders handled per employee in 1996 (top 3): Margaret Peacock (31), Nancy Davolio (26), Laura Callahan (19)"
       ]
     },
     {
@@ -85,6 +139,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Summed line totals over 48 retrieved order-detail chunks mentioning 'Beverages'."
+      ],
+      "embedding_answer": "$19,896.19",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Summed line totals over 40 retrieved order-detail chunks mentioning 'Beverages'."
+      ],
+      "llm_answer": "$267,868.18",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "The total revenue from the Beverages category was $267,868.18.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Summed line totals (unit price x quantity x (1 - discount)) over 12 products in 'Beverages' across all orders."
       ]
     },
     {
@@ -101,6 +168,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Summed line totals over 48 retrieved order-detail chunks mentioning 'Dairy Products'."
+      ],
+      "embedding_answer": "$47,715.20",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Summed line totals over 48 retrieved order-detail chunks mentioning 'Dairy Products'."
+      ],
+      "llm_answer": "$234,507.29",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "The total revenue from the Dairy Products category was $234,507.29.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Summed line totals (unit price x quantity x (1 - discount)) over 10 products in 'Dairy Products' across all orders."
       ]
     },
     {
@@ -117,6 +197,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 0 order chunks."
+      ],
+      "embedding_answer": "Save-a-lot Markets",
+      "embedding_correct": true,
+      "embedding_evidence": [
+        "Retrieved 47 order chunks."
+      ],
+      "llm_answer": "Save-a-lot Markets",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "Save-a-lot Markets placed the highest number of orders with customers placing an average of 31 orders per customer.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Orders placed per customer (top 3): Save-a-lot Markets (31), Ernst Handel (30), QUICK-Stop (28)"
       ]
     },
     {
@@ -133,6 +226,19 @@
       "baseline_correct": true,
       "baseline_evidence": [
         "Revenue per customer over 50 retrieved order-detail chunks (top 3): QUICK-Stop ($3,616.50), Ernst Handel ($1,322.00), Frankenversand ($1,191.15)"
+      ],
+      "embedding_answer": "Save-a-lot Markets",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Revenue per customer over 29 retrieved order-detail chunks (top 3): Save-a-lot Markets ($16,613.55), QUICK-Stop ($2,944.38), Toms Spezialitäten ($800.00)"
+      ],
+      "llm_answer": "QUICK-Stop",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "Quick-Stop generated the highest revenue among the three companies listed.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Revenue per customer (top 3): QUICK-Stop ($110,277.32), Ernst Handel ($104,874.99), Save-a-lot Markets ($104,361.96)"
       ]
     },
     {
@@ -149,6 +255,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Revenue per product over 46 retrieved order-detail chunks (top 3): Konbu ($2,319.24), Pavlova ($1,343.65), Outback Lager ($1,269.00)"
+      ],
+      "embedding_answer": "Tarte au sucre",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Revenue per product over 48 retrieved order-detail chunks (top 3): Tarte au sucre ($6,680.15), Sirop d'érable ($4,933.35), Uncle Bob's Organic Dried Pears ($4,804.80)"
+      ],
+      "llm_answer": "Côte de Blaye",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "Côte de Blaye generated the highest revenue among the three products listed.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Revenue per product (top 3): Côte de Blaye ($141,396.74), Thüringer Rostbratwurst ($80,368.66), Raclette Courdavault ($71,155.70)"
       ]
     },
     {
@@ -165,6 +284,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 1 product chunks."
+      ],
+      "embedding_answer": "Confections",
+      "embedding_correct": true,
+      "embedding_evidence": [
+        "Retrieved 1 product chunks."
+      ],
+      "llm_answer": "Confections",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "The category with the highest product count is Confections.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Product counts per category (top 3): Confections (13), Beverages (12), Condiments (12)"
       ]
     },
     {
@@ -181,6 +313,19 @@
       "baseline_correct": true,
       "baseline_evidence": [
         "Top retrieved chunk: Product Chai: supplier Exotic Liquids, category Beverages, unit price 18.00, units in stock 39, discontinued no."
+      ],
+      "embedding_answer": "Exotic Liquids",
+      "embedding_correct": true,
+      "embedding_evidence": [
+        "Top retrieved chunk: Product Chai: supplier Exotic Liquids, category Beverages, unit price 18.00, units in stock 39, discontinued no."
+      ],
+      "llm_answer": "Exotic Liquids",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "The product \"Chai\" is supplied by \"Exotic Liquids.\"",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Product 'Chai' --SUPPLIED_BY--> 'Exotic Liquids'."
       ]
     },
     {
@@ -197,6 +342,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 2 product chunks mentioning 'Exotic Liquids'."
+      ],
+      "embedding_answer": "2",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 2 product chunks mentioning 'Exotic Liquids'."
+      ],
+      "llm_answer": "3",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "The supplier Exotic Liquids supplies 3 products.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Supplier 'Exotic Liquids' --SUPPLIED_BY-- 3 products."
       ]
     },
     {
@@ -213,6 +371,19 @@
       "baseline_correct": true,
       "baseline_evidence": [
         "Retrieved 6 order chunks mentioning 'Alfreds Futterkiste'."
+      ],
+      "embedding_answer": "6",
+      "embedding_correct": true,
+      "embedding_evidence": [
+        "Retrieved 6 order chunks mentioning 'Alfreds Futterkiste'."
+      ],
+      "llm_answer": "6",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "The customer Alfreds Futterkiste placed 6 orders.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Customer 'Alfreds Futterkiste' --PLACED--> 6 orders."
       ]
     },
     {
@@ -229,6 +400,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 49 order chunks mentioning 'United Package'."
+      ],
+      "embedding_answer": "49",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 49 order chunks mentioning 'United Package'."
+      ],
+      "llm_answer": "326",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "United Package shipped 326 orders.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Shipper 'United Package' --SHIPPED_BY-- 326 orders."
       ]
     },
     {
@@ -245,7 +429,18 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Summed freight over 49 retrieved order chunks mentioning 'Federal Shipping'."
-      ]
+      ],
+      "embedding_answer": "$2,711.75",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Summed freight over 32 retrieved order chunks mentioning 'Federal Shipping'."
+      ],
+      "llm_answer": "I don't know",
+      "llm_correct": false,
+      "llm_parse_source": "llm",
+      "llm_composed": null,
+      "llm_composed_contains_answer": false,
+      "llm_evidence": []
     },
     {
       "id": "q16",
@@ -261,6 +456,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 1 product chunks mentioning 'Seafood'."
+      ],
+      "embedding_answer": "",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 0 product chunks mentioning 'Seafood'."
+      ],
+      "llm_answer": "Confections",
+      "llm_correct": false,
+      "llm_parse_source": "llm",
+      "llm_composed": "Confections are a product in the Seafood category.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Product counts per category (top 3): Confections (13), Beverages (12), Condiments (12)"
       ]
     },
     {
@@ -277,6 +485,19 @@
       "baseline_correct": true,
       "baseline_evidence": [
         "Retrieved 11 customer chunks mentioning 'Germany'."
+      ],
+      "embedding_answer": "10",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 10 customer chunks mentioning 'Germany'."
+      ],
+      "llm_answer": "11",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "According to the information provided, there is one customer node located in Germany with a country code of \"DE\".",
+      "llm_composed_contains_answer": false,
+      "llm_evidence": [
+        "11 Customer nodes have country == 'Germany'."
       ]
     },
     {
@@ -293,6 +514,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 50 order chunks dated 1998."
+      ],
+      "embedding_answer": "15",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 15 order chunks dated 1998."
+      ],
+      "llm_answer": "270",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "In 1998, there were 270 order nodes.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "270 Order nodes have year == 1998."
       ]
     },
     {
@@ -309,6 +543,19 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Mean line-total sum over 43 distinct orders in 50 retrieved order-detail chunks."
+      ],
+      "embedding_answer": "$821.52",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Mean line-total sum over 45 distinct orders in 48 retrieved order-detail chunks."
+      ],
+      "llm_answer": "$1,525.05",
+      "llm_correct": true,
+      "llm_parse_source": "fallback",
+      "llm_composed": "The average order value for these 830 orders was $1,525.05.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "Total revenue $1,265,793.02 over 830 orders."
       ]
     },
     {
@@ -325,9 +572,33 @@
       "baseline_correct": false,
       "baseline_evidence": [
         "Retrieved 3 product chunks marked discontinued."
+      ],
+      "embedding_answer": "3",
+      "embedding_correct": false,
+      "embedding_evidence": [
+        "Retrieved 3 product chunks marked discontinued."
+      ],
+      "llm_answer": "8",
+      "llm_correct": true,
+      "llm_parse_source": "llm",
+      "llm_composed": "There are 8 product nodes that have been discontinued.",
+      "llm_composed_contains_answer": true,
+      "llm_evidence": [
+        "8 Product nodes have discontinued == True."
       ]
     }
   ],
+  "embedding_baseline_correct": 4,
+  "embedding_baseline_accuracy": 0.2,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "llm_correct": 18,
+  "llm_accuracy": 0.9,
+  "llm_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "llm_routing": {
+    "parsed_by_llm": 10,
+    "fallback_to_rules": 10
+  },
+  "llm_composed_contains_answer": 18,
   "graph_stats": {
     "nodes": {
       "Customer": 91,

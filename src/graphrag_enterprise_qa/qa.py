@@ -1,11 +1,16 @@
 """GraphRAG question answering over the Northwind knowledge graph.
 
-No LLM is involved anywhere: the question is parsed with rules
-(entity names matched against the graph, intent from keywords), the
-answer is computed by 1-2 hop traversal + aggregation over the graph,
-and the answer is extractive - it comes from the graph itself.
+The question is parsed with rules (entity names matched against the
+graph, intent from keywords), the answer is computed by 1-2 hop
+traversal + aggregation over the graph, and the answer is extractive -
+it comes from the graph itself.
 
 Every answer is returned as (answer_string, evidence_lines).
+
+The optional LLM layer lives in llm.py: it replaces parse_question
+with an LLM router (with rule-based fallback) and composes the final
+answer in natural language. This module stays rule-based, and
+_dispatch is shared by both paths.
 """
 
 from __future__ import annotations
@@ -169,19 +174,19 @@ def _name(g: nx.MultiDiGraph, node) -> str:
 # --- answer functions (graph traversal only) --------------------------------
 
 
-def answer_question(question: str, g: nx.MultiDiGraph, idx: Indexes) -> tuple[str, list[str]]:
-    parsed = parse_question(question, idx)
-    intent = parsed["intent"]
-    entities = parsed["entities"]
-    years = parsed["years"]
-    countries = parsed["countries"]
-    handler = _HANDLERS.get(intent)
+def _dispatch(parsed: dict, g: nx.MultiDiGraph, idx: Indexes) -> tuple[str, list[str]]:
+    """Run the handler for a parsed question (rule-based or LLM-routed)."""
+    handler = _HANDLERS.get(parsed["intent"])
     if handler is None:
         return UNKNOWN, []
     try:
-        return handler(g, idx, entities, years, countries)
+        return handler(g, idx, parsed["entities"], parsed["years"], parsed["countries"])
     except (KeyError, ValueError, IndexError):
         return UNKNOWN, []
+
+
+def answer_question(question: str, g: nx.MultiDiGraph, idx: Indexes) -> tuple[str, list[str]]:
+    return _dispatch(parse_question(question, idx), g, idx)
 
 
 def _a_supplier_most_products_in_category(g, idx, entities, years, countries):

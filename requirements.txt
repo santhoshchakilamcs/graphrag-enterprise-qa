@@ -2,3 +2,11 @@ networkx>=3.0
 pandas>=2.0
 scikit-learn>=1.3
 pytest>=7.0
+# Optional: LLM mode (--llm) and the embedding baseline (--embedding).
+# torch is large; on CPU-only machines install it from the CPU index first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.0
+transformers>=4.40
+sentence-transformers>=2.5
+# Visualizations (make_visuals.py): SVG charts + HTML report, text only.
+matplotlib>=3.8

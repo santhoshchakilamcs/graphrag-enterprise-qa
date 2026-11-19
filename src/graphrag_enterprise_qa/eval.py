@@ -156,11 +156,29 @@ def answers_match(got: str, expected: str) -> bool:
     return False
 
 
-def run_eval(data_dir: str | None = None) -> dict:
-    """Run both systems over all questions and score them."""
+def run_eval(data_dir: str | None = None, llm=None, embedding: bool = False) -> dict:
+    """Run the systems over all questions and score them.
+
+    Always runs rule-based GraphRAG and the TF-IDF baseline. With
+    embedding=True it also runs the dense embedding baseline; with
+    llm set to a loaded LLMRouter it also runs LLM-mode GraphRAG
+    (LLM routing + LLM-composed answers, scored on the extractive
+    graph value). The extra systems add their own keys; the
+    rule-based keys are always present and unchanged.
+    """
     tables = load_data(data_dir)
     graph, idx = build_graph(data_dir)
     baseline = Baseline(data_dir)
+    emb = None
+    if embedding:
+        from .embedding_baseline import EmbeddingBaseline
+
+        emb = EmbeddingBaseline(data_dir)
+    llm_row_fn = None
+    if llm is not None:
+        from .llm import answer_question_llm
+
+        llm_row_fn = answer_question_llm
     questions = load_questions()
 
     results = []
@@ -169,25 +187,37 @@ def run_eval(data_dir: str | None = None) -> dict:
         expected = ground_truth(item["intent"], item["params"], tables)
         graph_answer, graph_evidence = answer_question(question, graph, idx)
         base_answer, base_evidence = baseline.answer_question(question, idx)
-        results.append(
-            {
-                "id": item["id"],
-                "question": question,
-                "intent": item["intent"],
-                "ground_truth": expected,
-                "graphrag_answer": graph_answer,
-                "graphrag_correct": answers_match(graph_answer, expected),
-                "graphrag_evidence": graph_evidence,
-                "baseline_answer": base_answer,
-                "baseline_correct": answers_match(base_answer, expected),
-                "baseline_evidence": base_evidence,
-            }
-        )
+        row = {
+            "id": item["id"],
+            "question": question,
+            "intent": item["intent"],
+            "ground_truth": expected,
+            "graphrag_answer": graph_answer,
+            "graphrag_correct": answers_match(graph_answer, expected),
+            "graphrag_evidence": graph_evidence,
+            "baseline_answer": base_answer,
+            "baseline_correct": answers_match(base_answer, expected),
+            "baseline_evidence": base_evidence,
+        }
+        if emb is not None:
+            emb_answer, emb_evidence = emb.answer_question(question, idx)
+            row["embedding_answer"] = emb_answer
+            row["embedding_correct"] = answers_match(emb_answer, expected)
+            row["embedding_evidence"] = emb_evidence
+        if llm_row_fn is not None:
+            llm_row = llm_row_fn(question, graph, idx, llm)
+            row["llm_answer"] = llm_row["answer"]
+            row["llm_correct"] = answers_match(llm_row["answer"], expected)
+            row["llm_parse_source"] = llm_row["parse_source"]
+            row["llm_composed"] = llm_row["composed"]
+            row["llm_composed_contains_answer"] = llm_row["composed_contains_answer"]
+            row["llm_evidence"] = llm_row["evidence"]
+        results.append(row)
 
     total = len(results)
     graph_correct = sum(r["graphrag_correct"] for r in results)
     base_correct = sum(r["baseline_correct"] for r in results)
-    return {
+    summary = {
         "n_questions": total,
         "graphrag_correct": graph_correct,
         "graphrag_accuracy": graph_correct / total if total else 0.0,
@@ -195,3 +225,21 @@ def run_eval(data_dir: str | None = None) -> dict:
         "baseline_accuracy": base_correct / total if total else 0.0,
         "results": results,
     }
+    if emb is not None:
+        emb_correct = sum(r["embedding_correct"] for r in results)
+        summary["embedding_baseline_correct"] = emb_correct
+        summary["embedding_baseline_accuracy"] = emb_correct / total if total else 0.0
+        summary["embedding_model"] = emb.model_name
+    if llm_row_fn is not None:
+        llm_correct = sum(r["llm_correct"] for r in results)
+        summary["llm_correct"] = llm_correct
+        summary["llm_accuracy"] = llm_correct / total if total else 0.0
+        summary["llm_model"] = llm.model_name
+        summary["llm_routing"] = {
+            "parsed_by_llm": sum(1 for r in results if r["llm_parse_source"] == "llm"),
+            "fallback_to_rules": sum(1 for r in results if r["llm_parse_source"] == "fallback"),
+        }
+        summary["llm_composed_contains_answer"] = sum(
+            1 for r in results if r["llm_composed_contains_answer"]
+        )
+    return summary

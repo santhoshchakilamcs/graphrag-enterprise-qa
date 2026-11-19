@@ -38,6 +38,25 @@ def test_results_json_matches_fresh_run():
         assert stored_row["ground_truth"] == fresh_row["ground_truth"]
         assert stored_row["graphrag_answer"] == fresh_row["graphrag_answer"]
         assert stored_row["baseline_answer"] == fresh_row["baseline_answer"]
+    # The stored file also carries the embedding + LLM numbers, which
+    # only a --llm --embedding run reproduces. Check they are present
+    # and internally consistent (accuracies match correct/20).
+    for key in (
+        "embedding_baseline_correct",
+        "embedding_baseline_accuracy",
+        "llm_correct",
+        "llm_accuracy",
+    ):
+        assert key in stored, f"results.json is missing {key}"
+    assert (
+        stored["embedding_baseline_accuracy"]
+        == stored["embedding_baseline_correct"] / stored["n_questions"]
+    )
+    assert stored["llm_accuracy"] == stored["llm_correct"] / stored["n_questions"]
+    assert stored["llm_routing"]["parsed_by_llm"] + stored["llm_routing"]["fallback_to_rules"] == 20
+    for row in stored["results"]:
+        assert "embedding_answer" in row and "embedding_correct" in row
+        assert "llm_answer" in row and "llm_parse_source" in row
 
 
 def test_answers_match_money_tolerance():
