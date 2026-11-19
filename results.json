@@ -1,0 +1,352 @@
+{
+  "n_questions": 20,
+  "graphrag_correct": 20,
+  "graphrag_accuracy": 1.0,
+  "baseline_correct": 5,
+  "baseline_accuracy": 0.25,
+  "results": [
+    {
+      "id": "q01",
+      "question": "Which supplier provides the most products in the Beverages category?",
+      "intent": "supplier_most_products_in_category",
+      "ground_truth": "Bigfoot Breweries",
+      "graphrag_answer": "Bigfoot Breweries",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Category 'Beverages' has 12 products.",
+        "Supplier product counts in this category: Bigfoot Breweries (3), Exotic Liquids (2), Aux joyeux ecclésiastiques (2)"
+      ],
+      "baseline_answer": "I don't know",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 0 product chunks mentioning 'Beverages'."
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Which supplier provides the most products in the Seafood category?",
+      "intent": "supplier_most_products_in_category",
+      "ground_truth": "Svensk Sjöföda AB",
+      "graphrag_answer": "Svensk Sjöföda AB",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Category 'Seafood' has 12 products.",
+        "Supplier product counts in this category: Svensk Sjöföda AB (3), New England Seafood Cannery (2), Lyngbysild (2)"
+      ],
+      "baseline_answer": "New England Seafood Cannery",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 1 product chunks mentioning 'Seafood'."
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Which employee handled the most orders in 1997?",
+      "intent": "employee_most_orders",
+      "ground_truth": "Margaret Peacock",
+      "graphrag_answer": "Margaret Peacock",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Orders handled per employee in 1997 (top 3): Margaret Peacock (81), Janet Leverling (71), Nancy Davolio (55)"
+      ],
+      "baseline_answer": "Janet Leverling",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 50 order chunks."
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Which employee handled the most orders in 1996?",
+      "intent": "employee_most_orders",
+      "ground_truth": "Margaret Peacock",
+      "graphrag_answer": "Margaret Peacock",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Orders handled per employee in 1996 (top 3): Margaret Peacock (31), Nancy Davolio (26), Laura Callahan (19)"
+      ],
+      "baseline_answer": "Margaret Peacock",
+      "baseline_correct": true,
+      "baseline_evidence": [
+        "Retrieved 50 order chunks."
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "What is the total revenue from the Beverages category?",
+      "intent": "revenue_category",
+      "ground_truth": "$267,868.18",
+      "graphrag_answer": "$267,868.18",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Summed line totals (unit price x quantity x (1 - discount)) over 12 products in 'Beverages' across all orders."
+      ],
+      "baseline_answer": "$14,499.39",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Summed line totals over 48 retrieved order-detail chunks mentioning 'Beverages'."
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "What is the total revenue from the Dairy Products category?",
+      "intent": "revenue_category",
+      "ground_truth": "$234,507.29",
+      "graphrag_answer": "$234,507.29",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Summed line totals (unit price x quantity x (1 - discount)) over 10 products in 'Dairy Products' across all orders."
+      ],
+      "baseline_answer": "$14,086.87",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Summed line totals over 48 retrieved order-detail chunks mentioning 'Dairy Products'."
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Which customer placed the most orders?",
+      "intent": "top_customer_orders",
+      "ground_truth": "Save-a-lot Markets",
+      "graphrag_answer": "Save-a-lot Markets",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Orders placed per customer (top 3): Save-a-lot Markets (31), Ernst Handel (30), QUICK-Stop (28)"
+      ],
+      "baseline_answer": "I don't know",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 0 order chunks."
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Which customer generated the most revenue?",
+      "intent": "top_customer_revenue",
+      "ground_truth": "QUICK-Stop",
+      "graphrag_answer": "QUICK-Stop",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Revenue per customer (top 3): QUICK-Stop ($110,277.32), Ernst Handel ($104,874.99), Save-a-lot Markets ($104,361.96)"
+      ],
+      "baseline_answer": "QUICK-Stop",
+      "baseline_correct": true,
+      "baseline_evidence": [
+        "Revenue per customer over 50 retrieved order-detail chunks (top 3): QUICK-Stop ($3,616.50), Ernst Handel ($1,322.00), Frankenversand ($1,191.15)"
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Which product generated the highest revenue?",
+      "intent": "top_product_revenue",
+      "ground_truth": "Côte de Blaye",
+      "graphrag_answer": "Côte de Blaye",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Revenue per product (top 3): Côte de Blaye ($141,396.74), Thüringer Rostbratwurst ($80,368.66), Raclette Courdavault ($71,155.70)"
+      ],
+      "baseline_answer": "Konbu",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Revenue per product over 46 retrieved order-detail chunks (top 3): Konbu ($2,319.24), Pavlova ($1,343.65), Outback Lager ($1,269.00)"
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Which category has the most products?",
+      "intent": "category_most_products",
+      "ground_truth": "Confections",
+      "graphrag_answer": "Confections",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Product counts per category (top 3): Confections (13), Beverages (12), Condiments (12)"
+      ],
+      "baseline_answer": "Dairy Products",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 1 product chunks."
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "Who is the supplier of the product Chai?",
+      "intent": "supplier_of_product",
+      "ground_truth": "Exotic Liquids",
+      "graphrag_answer": "Exotic Liquids",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Product 'Chai' --SUPPLIED_BY--> 'Exotic Liquids'."
+      ],
+      "baseline_answer": "Exotic Liquids",
+      "baseline_correct": true,
+      "baseline_evidence": [
+        "Top retrieved chunk: Product Chai: supplier Exotic Liquids, category Beverages, unit price 18.00, units in stock 39, discontinued no."
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "How many products does the supplier Exotic Liquids supply?",
+      "intent": "count_products_supplier",
+      "ground_truth": "3",
+      "graphrag_answer": "3",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Supplier 'Exotic Liquids' --SUPPLIED_BY-- 3 products."
+      ],
+      "baseline_answer": "2",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 2 product chunks mentioning 'Exotic Liquids'."
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "How many orders did the customer Alfreds Futterkiste place?",
+      "intent": "count_orders_customer",
+      "ground_truth": "6",
+      "graphrag_answer": "6",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Customer 'Alfreds Futterkiste' --PLACED--> 6 orders."
+      ],
+      "baseline_answer": "6",
+      "baseline_correct": true,
+      "baseline_evidence": [
+        "Retrieved 6 order chunks mentioning 'Alfreds Futterkiste'."
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "How many orders did United Package ship?",
+      "intent": "count_orders_shipper",
+      "ground_truth": "326",
+      "graphrag_answer": "326",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Shipper 'United Package' --SHIPPED_BY-- 326 orders."
+      ],
+      "baseline_answer": "49",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 49 order chunks mentioning 'United Package'."
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "What is the total freight charged by Federal Shipping?",
+      "intent": "freight_shipper",
+      "ground_truth": "$20,512.51",
+      "graphrag_answer": "$20,512.51",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Summed freight over 255 orders shipped by 'Federal Shipping'."
+      ],
+      "baseline_answer": "$1,209.61",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Summed freight over 49 retrieved order chunks mentioning 'Federal Shipping'."
+      ]
+    },
+    {
+      "id": "q16",
+      "question": "Which products are in the Seafood category?",
+      "intent": "list_products_category",
+      "ground_truth": "Boston Crab Meat, Carnarvon Tigers, Escargots de Bourgogne, Gravad lax, Ikura, Inlagd Sill, Jack's New England Clam Chowder, Konbu, Nord-Ost Matjeshering, Rogede sild, Röd Kaviar, Spegesild",
+      "graphrag_answer": "Boston Crab Meat, Carnarvon Tigers, Escargots de Bourgogne, Gravad lax, Ikura, Inlagd Sill, Jack's New England Clam Chowder, Konbu, Nord-Ost Matjeshering, Rogede sild, Röd Kaviar, Spegesild",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "12 products --IN_CATEGORY--> 'Seafood'."
+      ],
+      "baseline_answer": "Boston Crab Meat",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 1 product chunks mentioning 'Seafood'."
+      ]
+    },
+    {
+      "id": "q17",
+      "question": "How many customers are based in Germany?",
+      "intent": "count_customers_country",
+      "ground_truth": "11",
+      "graphrag_answer": "11",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "11 Customer nodes have country == 'Germany'."
+      ],
+      "baseline_answer": "11",
+      "baseline_correct": true,
+      "baseline_evidence": [
+        "Retrieved 11 customer chunks mentioning 'Germany'."
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "How many orders were placed in 1998?",
+      "intent": "count_orders_year",
+      "ground_truth": "270",
+      "graphrag_answer": "270",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "270 Order nodes have year == 1998."
+      ],
+      "baseline_answer": "50",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 50 order chunks dated 1998."
+      ]
+    },
+    {
+      "id": "q19",
+      "question": "What is the average order value?",
+      "intent": "average_order_value",
+      "ground_truth": "$1,525.05",
+      "graphrag_answer": "$1,525.05",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "Total revenue $1,265,793.02 over 830 orders."
+      ],
+      "baseline_answer": "$241.68",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Mean line-total sum over 43 distinct orders in 50 retrieved order-detail chunks."
+      ]
+    },
+    {
+      "id": "q20",
+      "question": "How many products are discontinued?",
+      "intent": "count_discontinued",
+      "ground_truth": "8",
+      "graphrag_answer": "8",
+      "graphrag_correct": true,
+      "graphrag_evidence": [
+        "8 Product nodes have discontinued == True."
+      ],
+      "baseline_answer": "3",
+      "baseline_correct": false,
+      "baseline_evidence": [
+        "Retrieved 3 product chunks marked discontinued."
+      ]
+    }
+  ],
+  "graph_stats": {
+    "nodes": {
+      "Customer": 91,
+      "Product": 77,
+      "Supplier": 29,
+      "Employee": 9,
+      "Category": 8,
+      "Order": 830,
+      "Shipper": 3
+    },
+    "edges": {
+      "PLACED": 830,
+      "CONTAINS": 2155,
+      "SUPPLIED_BY": 77,
+      "MANAGED_BY": 830,
+      "IN_CATEGORY": 77,
+      "SHIPPED_BY": 830
+    },
+    "total_nodes": 1047,
+    "total_edges": 4799
+  }
+}
